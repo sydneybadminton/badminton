@@ -26,13 +26,8 @@ controllers.controller('LoginCtrl',
 
 	//Logout function
 	$scope.Logout = function() {
-	    UtilSvc.showPleaseWait();
-		var logout = BadmintonSvc.logout();
-		logout.then(function(payload) {
-		    showLogin();
-		}, function(error) {
-		    showLogin();
-		});
+		BadmintonSvc.logout();
+		showLogin();
 	}
 
 	// Call Reset Password Page from Login
@@ -581,13 +576,20 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 	};
 
 	$scope.groupOwners = function() {
-	    $state.go('tab.top');
+	    $state.go('tab.topup');
+	}
+
+	$scope.changeSuperUser = function() {
+	    $state.go('tab.changeSU');
 	}
 });
 //---------------------------------------------------------------
 //SuperUser tab - End
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//TopUpCtrl - Start
+//---------------------------------------------------------------
 controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
     $scope.goBack = function() {
 		$ionicNavBarDelegate.back();
@@ -595,9 +597,7 @@ controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDe
 
 	refreshUI = function() {
 		$scope.flag = true;
-		console.log('Refreshing');
         UtilSvc.showPleaseWait();
-        var ownersList = [{firstname:"", lastname:"", email:""}];
         $scope.items = [];
         var getGroupOwners = BadmintonSvc.getGroupOwners();
         getGroupOwners.then(function(payload) {
@@ -665,6 +665,77 @@ controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDe
 	//	When you come to top up controller just refresh data
 	refreshUI();
 });
+//---------------------------------------------------------------
+//TopUpCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//ChangeSuperUserCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('ChangeSuperUserCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	refreshUI = function() {
+		$scope.flag = true;
+        UtilSvc.showPleaseWait();
+        $scope.items = [];
+        var getAllUsers = BadmintonSvc.getAllUsers();
+        getAllUsers.then(function(payload) {
+            UtilSvc.hidePleaseWait();
+            var allUsers = payload.data;
+            for (var i = 0; i < allUsers.length; i++) {
+                $scope.items.push({firstname: allUsers[i].firstname, lastname: allUsers[i].lastname, email: allUsers[i].email});
+            }
+            if(!$scope.$$phase) {
+                // Let the HTML UI know that there is new data in transactions history so that this can be displayed
+                // in the table
+                $scope.$apply();
+            }
+        }, function(error) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Could not retrieve all users. Please try again later');
+        });
+	};
+
+	$scope.change = function(user) {
+	    var confirmPopup = $ionicPopup.confirm({
+			title: 'Change Super User',
+			template: 'Are you sure want to change super user role to: ' + user.firstname + ' ' + user.lastname +
+			            '? \r\n\nAfter this you will NO longer be a super user and this action is unreversible.'
+		});
+		confirmPopup.then(function(res) {
+			if(res) {
+				UtilSvc.showPleaseWait();
+                var changeSuperUser = BadmintonSvc.changeSuperUser(user.email);
+                changeSuperUser.then(function(successResponse) {
+                    UtilSvc.hidePleaseWait();
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Super User is changed',
+                        template: 'Successfully changed the super user and you no longer a super user. ' +
+                                    'You must to logout now!'
+                    });
+                    alertPopup.then(function(res) {
+                        BadmintonSvc.logout();
+                        $state.go('login');
+                    });
+                }, function(errorResponse) {
+                    UtilSvc.hidePleaseWait();
+                    UtilSvc.showAlert('Error!', 'Could not change super user. Please try again later');
+                });
+			} else {
+				// Do nothing
+			}
+		});
+	};
+
+	//	When you come to top up controller just refresh data
+	refreshUI();
+});
+//---------------------------------------------------------------
+//ChangeSuperUserCtrl - End
+//---------------------------------------------------------------
 
 //Map Controller
 controllers.controller('MapCtrl', function($scope, $ionicLoading, $ionicNavBarDelegate) {

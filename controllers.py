@@ -394,6 +394,40 @@ def get_group_owners():
     return json_result.data
 
 
+@api.route('/api/getAllUsers')
+@login_required
+def get_all_users():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    users = User.query.all()
+    schema = UserShortSchema(many=True)
+    json_result = schema.dumps(users)
+    return json_result.data
+
+
+@api.route('/api/changeSuperUser')
+@login_required
+def change_super_user():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    email = request.args.get('email')
+    user = User.query.get(email)
+    if not user:
+        abort(404)
+
+    """Make the current user not a super user"""
+    current_user.isSuperUser = False
+
+    """Make the selected user as new super user"""
+    user.isGroupOwner = True
+    user.isAdmin = True
+    user.isSuperUser = True
+    db.session.commit()
+    return "Success"
+
+
 @api.route('/api/topupGroup', methods=['POST'])
 @login_required
 def topup_group():

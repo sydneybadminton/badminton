@@ -121,12 +121,22 @@ angular.module('communityApp', ['ionic',
       }
     })
 
-    .state('tab.top', {
+    .state('tab.topup', {
       url: '/topup',
       views: {
         'tab-SuperUser': {
           templateUrl: 'static/templates/top-up.html',
           controller: 'TopUpCtrl'
+        }
+      }
+    })
+
+    .state('tab.changeSU', {
+      url: '/changeSU',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/change_super_user.html',
+          controller: 'ChangeSuperUserCtrl'
         }
       }
     })

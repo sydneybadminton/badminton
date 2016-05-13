@@ -12,7 +12,7 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
         },
 
         logout: function() {
-            return $http.get('/api/logout/');
+            return $http.get('/api/logout');
         },
 
         getMembers: function() {
@@ -89,6 +89,18 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
 
         getGroupOwners: function() {
             return $http.get('/api/getGroupOwners');
+        },
+
+        getAllUsers: function() {
+            return $http.get('/api/getAllUsers');
+        },
+
+        changeSuperUser: function(email) {
+            return $http({
+                    url: '/api/changeSuperUser',
+                    method: "GET",
+                    params: {email: email}
+             });
         },
 
         topupGroup: function(email, amount) {
