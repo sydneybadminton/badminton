@@ -120,6 +120,16 @@ angular.module('communityApp', ['ionic',
         }
       }
     })
+
+    .state('tab.top', {
+      url: '/topup',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/top-up.html',
+          controller: 'TopUpCtrl'
+        }
+      }
+    })
     
     .state('login', {
       url: '/login',

@@ -1,21 +1,16 @@
 <ion-view hide-nav-bar="true" class="background">
 
-<ion-header-bar align-title="centre" class="bar-calm">
- <h1 class="title">Super User</h1>
-</ion-header-bar>
-  <ion-content class="has-header" ng-controller = "SuperUser">
-    <ion-list>
-      <ion-item>
-       	<button class="button button-block button-stable" ng-click="enterSaturdayCourtCost()">Saturday's Court Cost</button>	
- 		<button class="button button-block button-stable" ng-click="enterSundayCourtCost()">Sunday's Court Cost</button>
-  		<button class="button button-block button-stable" ng-click="enterShuttlesExpense()">Shuttle Expense</button>
-		<button class="button button-block button-stable" ng-click="groupOwners()">Top up</button>
-		</ion-item>
+	<ion-header-bar align-title="centre" class="bar-calm">
+		<h1 class="title">Super User</h1>
+	</ion-header-bar>
+	<ion-content class="has-header" ng-controller = "SuperUser">
+		<ion-list>
+			<ion-item>
+			<button class="button button-block button-stable" ng-click="enterSaturdayCourtCost()">Saturday's Court Cost</button>
+			<button class="button button-block button-stable" ng-click="enterSundayCourtCost()">Sunday's Court Cost</button>
+			<button class="button button-block button-stable" ng-click="enterShuttlesExpense()">Shuttle Expense</button>
+			<button class="button button-block button-stable" ng-click="groupOwners()">Top up</button>
+			</ion-item>
 		</ion-list>
-		<ion-list can-tap="true">
-			<ion-item ng-repeat = "item in items" ng-model="data.topupAmt" ng-click="openTopup(item)">
-				{{item.firstname}} {{item.lastname}}
-	   	</ion-item>
-		</ion-list>
-  </ion-content>
+	</ion-content>
 </ion-view>

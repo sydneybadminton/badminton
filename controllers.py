@@ -416,7 +416,7 @@ def topup_group():
         abort(404)
 
     """Insert a log"""
-    description = 'Topup for $' + str(amount) + ' is run for user group - ' + group_owner.group
+    description = 'Topup for $' + str(amount) + ' is run for user group - ' + str(group_owner.group)
     log = Log(current_user.email, description)
     db.session.add(log)
     db.session.commit()

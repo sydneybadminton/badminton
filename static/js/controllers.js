@@ -454,7 +454,7 @@ controllers.controller('AbsentList', function($rootScope, $scope, UtilSvc, Badmi
 //---------------------------------------------------------------
 //SuperUser tab - End
 //---------------------------------------------------------------	
-controllers.controller('SuperUser', function($scope, $ionicPopup, $timeout, BadmintonSvc, UtilSvc, $ionicLoading, $stateParams){
+controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeout, BadmintonSvc, UtilSvc, $ionicLoading, $stateParams){
 	$scope.enterSaturdayCourtCost = function() {
 		$scope.data = {};
 		var myPopup = $ionicPopup.prompt({
@@ -581,76 +581,90 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $timeout, Badm
 	};
 
 	$scope.groupOwners = function() {
-		$scope.flag = true;
-        UtilSvc.showPleaseWait();
-		var ownersList = [{firstname:"", lastname:"", email:""}];
-		$scope.items = [];
-		var getGroupOwners = BadmintonSvc.getGroupOwners();
-		getGroupOwners.then(function(payload) {
-		    UtilSvc.hidePleaseWait();
-		    var groupOwners = payload.data;
-		    for (var i = 0; i < groupOwners.length; i++) {
-		        $scope.items.push({firstname: groupOwners[i].firstname, lastname: groupOwners[i].lastname, email: groupOwners[i].email});
-		    }
-		    if(!$scope.$$phase) {
-                // Let the HTML UI know that there is new data in transactions history so that this can be displayed
-                // in the table
-                $scope.$apply();
-            }
-		}, function(error) {
-		    UtilSvc.hidePleaseWait();
-		    UtilSvc.showAlert('Error!', 'Could not retrieve users. Please try again later');
-		});
-
-		$scope.openTopup = function(groupOwner) {
-			$scope.data = {}
-			var myPopup = $ionicPopup.prompt({
-				template: '<input type="number" ng-model="data.topupAmt">',
-				title: 'Enter Topup Value',
-				subTitle: 'For '  + groupOwner.firstname + ' ' + groupOwner.lastname + ':',
-				scope: $scope,
-				buttons: [
-				          { text: 'Cancel' },
-				          {
-				        	  text: '<b>Save</b>',
-				        	  type: 'button-dark',
-				        	  onTap: function(e) {
-				        		  if (!$scope.data.topupAmt) {
-				        			  e.preventDefault();
-				        		  } else {
-				        			  return $scope.data.topupAmt;
-				        		  }
-				        	  }
-				          },
-				          ]
-			});
-
-			myPopup.then(function(res) {
-				if (res != undefined) {
-				    UtilSvc.showPleaseWait();
-					var topUpFnc = BadmintonSvc.topupGroup(groupOwner.email, res);
-					topUpFnc.then(function(payload) {
-					    UtilSvc.hidePleaseWait();
-					    UtilSvc.showAlert('Success', 'Successfully topped up');
-						myPopup.close();
-					},
-					function(error) {
-						UtilSvc.hidePleaseWait();
-		                UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
-						myPopup.close();
-					});
-				} else {
-					UtilSvc.hidePleaseWait();
-		            UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
-					myPopup.close();	
-				}
-			});
-		};
+	    $state.go('tab.top');
 	}
 });
 //---------------------------------------------------------------
 //SuperUser tab - End
-//---------------------------------------------------------------	
+//---------------------------------------------------------------
+
+controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	refreshUI = function() {
+		$scope.flag = true;
+		console.log('Refreshing');
+        UtilSvc.showPleaseWait();
+        var ownersList = [{firstname:"", lastname:"", email:""}];
+        $scope.items = [];
+        var getGroupOwners = BadmintonSvc.getGroupOwners();
+        getGroupOwners.then(function(payload) {
+            UtilSvc.hidePleaseWait();
+            var groupOwners = payload.data;
+            for (var i = 0; i < groupOwners.length; i++) {
+                $scope.items.push({firstname: groupOwners[i].firstname, lastname: groupOwners[i].lastname, email: groupOwners[i].email});
+            }
+            if(!$scope.$$phase) {
+                // Let the HTML UI know that there is new data in transactions history so that this can be displayed
+                // in the table
+                $scope.$apply();
+            }
+        }, function(error) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Could not retrieve users. Please try again later');
+        });
+
+        $scope.openTopup = function(groupOwner) {
+            $scope.data = {}
+            var myPopup = $ionicPopup.prompt({
+                template: '<input type="number" ng-model="data.topupAmt">',
+                title: 'Enter Topup Value',
+                subTitle: 'For '  + groupOwner.firstname + ' ' + groupOwner.lastname + ':',
+                scope: $scope,
+                buttons: [
+                          { text: 'Cancel' },
+                          {
+                              text: '<b>Save</b>',
+                              type: 'button-dark',
+                              onTap: function(e) {
+                                  if (!$scope.data.topupAmt) {
+                                      e.preventDefault();
+                                  } else {
+                                      return $scope.data.topupAmt;
+                                  }
+                              }
+                          },
+                          ]
+            });
+
+            myPopup.then(function(res) {
+                if (res != undefined) {
+                    UtilSvc.showPleaseWait();
+                    var topUpFnc = BadmintonSvc.topupGroup(groupOwner.email, res);
+                    topUpFnc.then(function(payload) {
+                        UtilSvc.hidePleaseWait();
+                        UtilSvc.showAlert('Success', 'Successfully topped up');
+                        myPopup.close();
+                    },
+                    function(error) {
+                        UtilSvc.hidePleaseWait();
+                        UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
+                        myPopup.close();
+                    });
+                } else {
+                    UtilSvc.hidePleaseWait();
+                    UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
+                    myPopup.close();
+                }
+            });
+        };
+	}
+
+	//	When you come to top up controller just refresh data
+	refreshUI();
+});
 
 //Map Controller
 controllers.controller('MapCtrl', function($scope, $ionicLoading, $ionicNavBarDelegate) {
