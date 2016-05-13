@@ -140,6 +140,16 @@ angular.module('communityApp', ['ionic',
         }
       }
     })
+
+    .state('tab.createNewUser', {
+      url: '/changeNewUser',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/create_new_user.html',
+          controller: 'CreateNewUserCtrl'
+        }
+      }
+    })
     
     .state('login', {
       url: '/login',

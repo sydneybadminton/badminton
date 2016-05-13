@@ -1,4 +1,5 @@
 import uuid
+import json
 from flask import request, abort, render_template, flash, redirect, url_for
 from flask.ext.login import current_user
 from flask.ext.login import login_required
@@ -513,7 +514,8 @@ def forgot_password():
     subject = "Badminton: password reset request"
     message = "You're receiving this email because you requested a password reset for the user " + user.firstname + \
               " " + user.lastname + ".\r\n\nPlease click the following link to reset the password,\r\n\n" + \
-              str(request.url_root) + "resetPassword?token=" + user.forgotPasswordToken
+              str(request.url_root) + "resetPassword?token=" + user.forgotPasswordToken + \
+              '\r\n\nThanks\r\nSydney Badminton Group'
     SendGrid.send_email(user.email, "no-reply@sendgrid.me", subject, message)
     return "Success"
 
@@ -544,6 +546,44 @@ def reset_password():
                 abort(404)
 
     abort(405)
+
+
+@api.route('/api/createANewUser')
+@login_required
+def create_a_new_user():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    firstname = request.args.get('firstname')
+    lastname = request.args.get('lastname')
+    email = request.args.get('email')
+    balance = request.args.get('balance')
+    saturday_absent_weeks = request.args.get('saturdayAbsentWeeks')
+    sunday_absent_weeks = request.args.get('sundayAbsentWeeks')
+    is_admin = bool(json.loads(request.args.get('isAdmin')))
+
+    user = User.query.get(email)
+    if user:
+        abort(409)
+
+    users = User.query.order_by(User.group.desc()).all()
+    group = users[0].group + 1
+
+    user = User(firstname, lastname, email, email+str(balance), balance, group, True, is_admin,
+                saturday_absent_weeks, 0, sunday_absent_weeks, 0)
+    user.forgotPasswordToken = str(uuid.uuid1())
+    db.session.add(user)
+    db.session.commit()
+
+    email_ids = [current_user.email, email]
+    subject = 'Badminton: Your account is provisioned'
+    message = 'Hi ' + firstname + ',\r\n\nGood news! Your account has been provisioned. Please click the below ' + \
+              'link to set your password.\r\n\n' + str(request.url_root) + "resetPassword?token=" + \
+              user.forgotPasswordToken + '\r\n\nAfter setting the password please click the below link to ' + \
+              'access your account. Please bookmark this link.\r\n\n' + str(request.url_root) + \
+              '\r\n\nThanks\r\nSydney Badminton Group'
+    SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
+    return "Success"
 
 
 @api.route('/api/logout')

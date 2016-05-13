@@ -96,13 +96,12 @@ controllers.controller('LoginCtrl',
 		}, function(response) {
 			// Alert dialog, try again
 			console.log('2:'+response.status);
-			if (response.status == 401) {
+			if (response.status === 401) {
 				msg = 'Wrong password entered';
 				showLoginFailedAlert(msg);
-			} else if (response.status==404) {
+			} else if (response.status === 404) {
 				msg = 'Wrong email entered';
 				showLoginFailedAlert(msg);
-
 			} else {
 				msg = 'There might other issues with login, please try again later';
 				showLoginFailedAlert(msg);
@@ -582,6 +581,10 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 	$scope.changeSuperUser = function() {
 	    $state.go('tab.changeSU');
 	}
+
+	$scope.createANewUser = function() {
+	    $state.go('tab.createNewUser');
+	}
 });
 //---------------------------------------------------------------
 //SuperUser tab - End
@@ -735,6 +738,78 @@ controllers.controller('ChangeSuperUserCtrl', function($scope, $ionicPopup, $sta
 });
 //---------------------------------------------------------------
 //ChangeSuperUserCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//ChangeSuperUserCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('CreateNewUserCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.isAdmin = false;
+
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	$scope.createANewUser = function() {
+	    if(!$scope.firstname || UtilSvc.isStringBlank($scope.firstname)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter first name');
+	        return;
+	    }
+	    if(!$scope.lastname || UtilSvc.isStringBlank($scope.lastname)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter last name');
+	        return;
+	    }
+	    if(!$scope.email || !UtilSvc.validateEmail($scope.email)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter valid email');
+	        return;
+	    }
+	    if(!$scope.confirmEmail || ($scope.email !== $scope.confirmEmail)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Confirm email does not match with email field');
+	        return;
+	    }
+	    if(isNaN($scope.balance)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Enter valid number in balance field');
+	        return;
+	    }
+	    if(isNaN($scope.saturdayAbsentWeeks)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Enter valid number in Saturday absent field');
+	        return;
+	    }
+	    if(isNaN($scope.sundayAbsentWeeks)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Enter valid number in Sunday absent field');
+	        return;
+	    }
+
+	    if($scope.balance === null) { $scope.balance = 0 }
+	    if($scope.saturdayAbsentWeeks === null) { $scope.saturdayAbsentWeeks = 0 }
+	    if($scope.sundayAbsentWeeks === null) { $scope.sundayAbsentWeeks = 0 }
+
+        UtilSvc.showPleaseWait();
+        var createANewUser = BadmintonSvc.createANewUser($scope.firstname, $scope.lastname, $scope.confirmEmail,
+                                                         $scope.balance, $scope.saturdayAbsentWeeks,
+                                                         $scope.sundayAbsentWeeks, $scope.isAdmin)
+        createANewUser.then(function(successResponse) {
+            UtilSvc.hidePleaseWait();
+            var alertPopup = $ionicPopup.alert({
+                title: 'New user is created',
+                template: 'Successfully create a new user for ' + $scope.firstname + ' ' + $scope.lastname
+            });
+            alertPopup.then(function(res) {
+                $ionicNavBarDelegate.back();
+            });
+        }, function(errorResponse) {
+            if(errorResponse.status === 409) {
+                UtilSvc.hidePleaseWait();
+                UtilSvc.showAlert('Error!', 'An user account with entered email address already exists.');
+            } else {
+                UtilSvc.hidePleaseWait();
+                UtilSvc.showAlert('Error!', 'Could not create a new user. Please try again later.');
+            }
+        });
+	};
+});
+//---------------------------------------------------------------
+//CreateNewUserCtrl - End
 //---------------------------------------------------------------
 
 //Map Controller

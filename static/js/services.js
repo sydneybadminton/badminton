@@ -125,7 +125,17 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
                     method: "GET",
                     params: {email: email}
              });
-        }
+        },
+
+        createANewUser: function(firstname, lastname, email, balance, saturdayAbsentWeeks, sundayAbsentWeeks, isAdmin) {
+            return $http({
+                    url: '/api/createANewUser',
+                    method: "GET",
+                    params: {firstname: firstname, lastname: lastname, email: email, balance: balance,
+                             saturdayAbsentWeeks: saturdayAbsentWeeks, sundayAbsentWeeks: sundayAbsentWeeks,
+                             isAdmin: isAdmin}
+             });
+        },
     }
     return badmintonServiceFunctions;
 }
@@ -535,6 +545,15 @@ services.factory('UtilSvc', ['$ionicPopup', '$ionicLoading', function($ionicPopu
 	var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 	
     return {
+        isStringBlank: function(str) {
+            return (!str || /^\s*$/.test(str));
+        },
+
+        validateEmail: function(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        },
+
     	showPleaseWait: function() {
     		$ionicLoading.show({
     			template: 'Please wait...'
