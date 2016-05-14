@@ -9,10 +9,10 @@
   <ion-content has-header="true" padding="true">
   <h2 style="text-align: center;">{{member.firstname}} {{member.lastname}}</h2>
   <h3 style="text-align: center;">Balance: {{member.balance | customCurrency}}</h3>
-  <button class="button button-block button-stable" ng-if="showCantPlaySatBtn" ng-click="cantPlaySatBtnClick()">Can't play on Saturdays</button>
-  <button class="button button-block button-stable" ng-if="showWantPlaySatBtn" ng-click="wantPlaySatBtnClick()">Want to play on Saturdays</button>
-  <button class="button button-block button-stable" ng-if="showCantPlaySunBtn" ng-click="cantPlaySunBtnClick()">Can't play on Sundays</button>
-  <button class="button button-block button-stable" ng-if="showWantPlaySunBtn" ng-click="wantPlaySunBtnClick()">Want to play on Sundays</button>
+  <button class="button button-block button-dark" ng-if="showCantPlaySatBtn" ng-click="cantPlaySatBtnClick()">Can't play on Saturdays</button>
+  <button class="button button-block button-dark" ng-if="showWantPlaySatBtn" ng-click="wantPlaySatBtnClick()">Want to play on Saturdays</button>
+  <button class="button button-block button-dark" ng-if="showCantPlaySunBtn" ng-click="cantPlaySunBtnClick()">Can't play on Sundays</button>
+  <button class="button button-block button-dark" ng-if="showWantPlaySunBtn" ng-click="wantPlaySunBtnClick()">Want to play on Sundays</button>
 	
 	<br>
    <H4>Most recent transactions:</H4>
