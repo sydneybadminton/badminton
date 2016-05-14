@@ -670,7 +670,6 @@ controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDe
                     });
                 } else {
                     UtilSvc.hidePleaseWait();
-                    UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
                     myPopup.close();
                 }
             });
