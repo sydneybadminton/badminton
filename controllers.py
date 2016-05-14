@@ -613,8 +613,76 @@ def delete_a_user():
     db.session.delete(user)
     db.session.commit()
 
+    email_ids = [current_user.email, email]
+    subject = 'Badminton: Your account is provisioned'
+    message = 'Hi ' + user.firstname + ',\r\n\nAs requested, your account has been deleted from badminton group.' + \
+              '\r\n\nThanks\r\nSydney Badminton Group'
+    SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
+
     """Insert a log"""
     description = 'User account for ' + user.firstname + ' ' + user.lastname + ' has been deleted.'
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
+    return "Success"
+
+
+@api.route('/api/sendAnEmail', methods=['POST'])
+@login_required
+def send_an_email():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    subject = request.json['subject']
+    message = request.json['message']
+
+    users = User.query.order_by(User.firstname.asc()).all()
+
+    email_ids = []
+    for user in users:
+        email_ids.append(user.email)
+
+    SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
+
+    """Insert a log"""
+    description = 'An email is sent to everyone with subject: ' + subject
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
+    return "Success"
+
+
+@api.route('/api/adhocCharge', methods=['POST'])
+@login_required
+def adhoc_charge():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    amount = request.json['amount']
+    subject = request.json['subject']
+    message = request.json['message']
+
+    users = User.query.order_by(User.firstname.asc()).all()
+    cost_per_player = float("{0:.2f}".format(float(amount) / float(len(users))))
+
+    """Add expense entry"""
+    expense_entry = Expense(amount, cost_per_player, "Deduction_AdHoc", len(users))
+    db.session.add(expense_entry)
+    db.session.commit()
+
+    email_ids = []
+    for user in users:
+        email_ids.append(user.email)
+        user.balance = float("{0:.2f}".format(user.balance - cost_per_player))
+
+        transaction = Transaction(user.email, cost_per_player, user.balance, "Deduct_AdHoc")
+        db.session.add(transaction)
+        db.session.commit()
+
+    SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
+
+    """Insert a log"""
+    description = 'An AdHoc amount of $' + str(amount) + ' is charged for reason: ' + subject
     log = Log(current_user.email, description)
     db.session.add(log)
     db.session.commit()

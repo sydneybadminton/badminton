@@ -144,6 +144,22 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
                              isAdmin: isAdmin}
              });
         },
+
+        sendAnEmail: function(subject, message) {
+            return $http({
+                    url: '/api/sendAnEmail',
+                    method: "POST",
+                    data: {subject: subject, message: message}
+             });
+        },
+
+        adhocCharge: function(amount, subject, message) {
+            return $http({
+                    url: '/api/adhocCharge',
+                    method: "POST",
+                    data: {amount: amount, subject: subject, message: message}
+             });
+        }
     }
     return badmintonServiceFunctions;
 }

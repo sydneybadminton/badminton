@@ -589,6 +589,14 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 	$scope.createANewUser = function() {
 	    $state.go('tab.createNewUser');
 	};
+
+	$scope.adhocCharge = function() {
+	    $state.go('tab.adhocCharge');
+	};
+
+	$scope.sendAnEmail = function() {
+	    $state.go('tab.sendAnEmail');
+	};
 });
 //---------------------------------------------------------------
 //SuperUser tab - End
@@ -803,6 +811,89 @@ controllers.controller('DeleteAUserCtrl', function($scope, $ionicPopup, $state, 
 });
 //---------------------------------------------------------------
 //DeleteAUserCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//AdHocChargeCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('AdHocChargeCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	$scope.charge = function() {
+	    if(isNaN($scope.amount)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Enter valid number in amount field');
+	        return;
+	    }
+	    if(!$scope.subject || UtilSvc.isStringBlank($scope.subject)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter subject');
+	        return;
+	    }
+	    if(!$scope.description || UtilSvc.isStringBlank($scope.description)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter description');
+	        return;
+	    }
+	    if($scope.amount === null) { $scope.amount = 0 }
+
+        UtilSvc.showPleaseWait();
+        var adhocCharge = BadmintonSvc.adhocCharge($scope.amount, $scope.subject, $scope.description);
+        adhocCharge.then(function(successResponse) {
+            UtilSvc.hidePleaseWait();
+            var alertPopup = $ionicPopup.alert({
+                title: 'AdHoc Charge Successful',
+                template: 'Successfully charged all users'
+            });
+            alertPopup.then(function(res) {
+                $ionicNavBarDelegate.back();
+            });
+        }, function(errorResponse) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Error occurred in executing AdHoc charge. Please try again later.');
+        });
+	};
+});
+//---------------------------------------------------------------
+//AdHocChargeCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//SendAnEmailCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('SendAnEmailCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	$scope.send = function() {
+	    if(!$scope.subject || UtilSvc.isStringBlank($scope.subject)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter subject');
+	        return;
+	    }
+	    if(!$scope.body || UtilSvc.isStringBlank($scope.body)) {
+	        UtilSvc.showAlert('Invalid Input!', 'Please enter email body');
+	        return;
+	    }
+
+        UtilSvc.showPleaseWait();
+        var sendAnEmail = BadmintonSvc.sendAnEmail($scope.subject, $scope.body);
+        sendAnEmail.then(function(successResponse) {
+            UtilSvc.hidePleaseWait();
+            var alertPopup = $ionicPopup.alert({
+                title: 'Email Sent',
+                template: 'Successfully an email has been sent all users'
+            });
+            alertPopup.then(function(res) {
+                $ionicNavBarDelegate.back();
+            });
+        }, function(errorResponse) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Could not send an email now. Please try again later.');
+        });
+	};
+});
+//---------------------------------------------------------------
+//SendAnEmailCtrl - End
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------

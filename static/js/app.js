@@ -160,6 +160,26 @@ angular.module('communityApp', ['ionic',
         }
       }
     })
+
+    .state('tab.adhocCharge', {
+      url: '/adhocCharge',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/adhoc_charge.html',
+          controller: 'AdHocChargeCtrl'
+        }
+      }
+    })
+
+    .state('tab.sendAnEmail', {
+      url: '/sendAnEmail',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/send_an_email.html',
+          controller: 'SendAnEmailCtrl'
+        }
+      }
+    })
     
     .state('login', {
       url: '/login',

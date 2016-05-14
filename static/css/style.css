@@ -30,6 +30,23 @@
   margin: 20px auto;
 }
 
+.adhocCharge{
+  width: 170px auto;
+  margin: 20px auto;
+}
+
+.sendAnEmail{
+  width: 170px auto;
+  margin: 40px auto;
+}
+
+textarea {
+    background:transparent;
+    outline:none;
+    border:none;
+    width:100%;
+}
+
 .padding{
 	padding:5px
 }
