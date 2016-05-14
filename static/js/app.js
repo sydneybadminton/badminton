@@ -150,6 +150,16 @@ angular.module('communityApp', ['ionic',
         }
       }
     })
+
+    .state('tab.deleteAUser', {
+      url: '/deleteAUser',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/delete_a_user.html',
+          controller: 'DeleteAUserCtrl'
+        }
+      }
+    })
     
     .state('login', {
       url: '/login',

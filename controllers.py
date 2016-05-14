@@ -401,7 +401,7 @@ def get_all_users():
     if not current_user.isSuperUser:
         abort(401)
 
-    users = User.query.all()
+    users = User.query.filter(User.email != current_user.email).order_by(User.firstname.asc())
     schema = UserShortSchema(many=True)
     json_result = schema.dumps(users)
     return json_result.data
@@ -426,6 +426,13 @@ def change_super_user():
     user.isAdmin = True
     user.isSuperUser = True
     db.session.commit()
+
+    """Insert a log"""
+    description = 'Super user is changed to: ' + user.firstname + ' ' + user.lastname
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
+
     return "Success"
 
 
@@ -583,6 +590,34 @@ def create_a_new_user():
               'access your account. Please bookmark this link.\r\n\n' + str(request.url_root) + \
               '\r\n\nThanks\r\nSydney Badminton Group'
     SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
+
+    """Insert a log"""
+    description = 'A new user account is created for ' + user.firstname + ' ' + user.lastname
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
+    return "Success"
+
+
+@api.route('/api/deleteAUser')
+@login_required
+def delete_a_user():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    email = request.args.get('email')
+    user = User.query.get(email)
+    if not user:
+        abort(404)
+
+    db.session.delete(user)
+    db.session.commit()
+
+    """Insert a log"""
+    description = 'User account for ' + user.firstname + ' ' + user.lastname + ' has been deleted.'
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
     return "Success"
 
 

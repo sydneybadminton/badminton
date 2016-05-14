@@ -127,6 +127,14 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
              });
         },
 
+        deleteAUser: function(email) {
+            return $http({
+                    url: '/api/deleteAUser',
+                    method: "GET",
+                    params: {email: email}
+             });
+        },
+
         createANewUser: function(firstname, lastname, email, balance, saturdayAbsentWeeks, sundayAbsentWeeks, isAdmin) {
             return $http({
                     url: '/api/createANewUser',

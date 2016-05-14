@@ -329,7 +329,7 @@ controllers.controller('AbsentList', function($rootScope, $scope, UtilSvc, Badmi
 		$scope.onItemDelete = function(item, email) {
 			var confirmPopup = $ionicPopup.confirm({
 			     title: 'Confirm Delete',
-			     template: 'Are you sure you want to delete' + item.firstname + ' ' + item.lastname + ' from Saturday absentee list?'
+			     template: 'Are you sure want to delete ' + item.firstname + ' ' + item.lastname + ' from Saturday absentee list?'
 			   });
 			confirmPopup.then(function(res) {
 			    if(res) {
@@ -388,7 +388,7 @@ controllers.controller('AbsentList', function($rootScope, $scope, UtilSvc, Badmi
 		$scope.onItemDelete = function(item, email) {
 			var confirmPopup = $ionicPopup.confirm({
 			     title: 'Confirm Delete',
-			     template: 'Are you sure you want to delete' + item.firstname + ' ' + item.lastname + ' from Sunday absentee list?'
+			     template: 'Are you sure want to delete ' + item.firstname + ' ' + item.lastname + ' from Sunday absentee list?'
 			   });
 			confirmPopup.then(function(res) {
 			    if(res) {
@@ -576,15 +576,19 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 
 	$scope.groupOwners = function() {
 	    $state.go('tab.topup');
-	}
+	};
 
 	$scope.changeSuperUser = function() {
 	    $state.go('tab.changeSU');
-	}
+	};
+
+	$scope.deleteAUser = function() {
+	    $state.go('tab.deleteAUser');
+	};
 
 	$scope.createANewUser = function() {
 	    $state.go('tab.createNewUser');
-	}
+	};
 });
 //---------------------------------------------------------------
 //SuperUser tab - End
@@ -741,7 +745,68 @@ controllers.controller('ChangeSuperUserCtrl', function($scope, $ionicPopup, $sta
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------
-//ChangeSuperUserCtrl - Start
+//DeleteAUserCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('DeleteAUserCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	refreshUI = function() {
+		$scope.flag = true;
+        UtilSvc.showPleaseWait();
+        $scope.items = [];
+        var getAllUsers = BadmintonSvc.getAllUsers();
+        getAllUsers.then(function(payload) {
+            UtilSvc.hidePleaseWait();
+            var allUsers = payload.data;
+            for (var i = 0; i < allUsers.length; i++) {
+                $scope.items.push({firstname: allUsers[i].firstname, lastname: allUsers[i].lastname, email: allUsers[i].email});
+            }
+            if(!$scope.$$phase) {
+                // Let the HTML UI know that there is new data in transactions history so that this can be displayed
+                // in the table
+                $scope.$apply();
+            }
+        }, function(error) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Could not retrieve all users. Please try again later');
+        });
+	};
+
+	$scope.onItemDelete = function(item) {
+        var confirmPopup = $ionicPopup.confirm({
+             title: 'Confirm Delete?',
+             template: 'Are you sure want to delete ' + item.firstname + ' ' + item.lastname + ' permanently from' +
+                        ' badminton group?'
+           });
+        confirmPopup.then(function(res) {
+            if(res) {
+                UtilSvc.showPleaseWait();
+                var removeSundayAbsentee = BadmintonSvc.deleteAUser(item.email);
+                removeSundayAbsentee.then(function(payload) {
+                    UtilSvc.hidePleaseWait();
+                    $scope.items.splice($scope.items.indexOf(item), 1);
+                }, function(error) {
+                    // Alert dialog, try again
+                    UtilSvc.hidePleaseWait();
+                    UtilSvc.showAlert('Error!', 'Could not remove user from the group, please try again later');
+                });
+            } else {
+               console.log('You are not sure');
+            }
+        });
+	};
+
+	//	When you come to top up controller just refresh data
+	refreshUI();
+});
+//---------------------------------------------------------------
+//DeleteAUserCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//CreateNewUserCtrl - Start
 //---------------------------------------------------------------
 controllers.controller('CreateNewUserCtrl', function($scope, $ionicPopup, $state, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
     $scope.isAdmin = false;
