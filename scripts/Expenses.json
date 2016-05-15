@@ -873,6 +873,15 @@
         "updatedAt": "2016-03-25T22:30:12.827Z"
     },
 	{
+        "cost": 40,
+        "costPerPerson": 4.44,
+        "createdAt": "2016-05-13T22:30:13.354Z",
+        "description": "Deduction_Saturday",
+        "numberOfPlayers": 9,
+        "objectId": "Ptxi1n3KEz",
+        "updatedAt": "2016-05-13T22:30:13.354Z"
+    },
+	{
         "cost": 160,
         "costPerPerson": 8,
         "createdAt": "2016-01-23T22:30:11.308Z",
@@ -1618,6 +1627,15 @@
         "numberOfPlayers": 27,
         "objectId": "qkfilCvZRB",
         "updatedAt": "2015-08-01T22:30:04.915Z"
+    },
+	{
+        "cost": 200,
+        "costPerPerson": 8.7,
+        "createdAt": "2016-05-14T22:30:10.538Z",
+        "description": "Deduction_Sunday",
+        "numberOfPlayers": 23,
+        "objectId": "quEYA5H871",
+        "updatedAt": "2016-05-14T22:30:10.538Z"
     },
 	{
         "cost": 60,

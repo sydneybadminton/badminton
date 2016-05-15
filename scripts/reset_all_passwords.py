@@ -19,6 +19,8 @@ def main():
                       'In order to access your account on new Badminton website you need to click the below link' + \
                       ' to set your password.\r\n\n' + \
                       'http://' + app.config['HOST_NAME'] + "/resetPassword?token=" + user.forgotPasswordToken + \
+                      '\r\n\nPlease bookmark following URL for easy access to the website in future.\r\n\n' + \
+                      'http://' + app.config['HOST_NAME'] + \
                       '\r\n\nThanks\r\n Maddy'
             SendGrid.send_email(user.email, "no-reply@sendgrid.me", subject, message)
 

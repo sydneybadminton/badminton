@@ -650,6 +650,19 @@
         "username": "aditya.tadimalla@gmail.com"
     },
 	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.447Z"
+        },
+        "Total_Amount": 336.01,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.654Z",
+        "objectId": "0UrVATfnhZ",
+        "updatedAt": "2016-05-13T22:30:13.654Z",
+        "username": "sreekanthp@gmail.com"
+    },
+	{
         "Amount": 1.41,
         "Date": {
             "__type": "Date",
@@ -934,6 +947,19 @@
         "objectId": "0k9cr1SIBA",
         "updatedAt": "2014-12-03T01:19:38.298Z",
         "username": "pvchithra@yahoo.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.729Z"
+        },
+        "Total_Amount": 90.75,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.180Z",
+        "objectId": "0oQwzXYWun",
+        "updatedAt": "2016-05-14T22:30:11.180Z",
+        "username": "ppraveen1979@gmail.com"
     },
 	{
         "Amount": 9.6,
@@ -6539,6 +6565,19 @@
         "username": "ramuknr@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.756Z"
+        },
+        "Total_Amount": 5.76,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.233Z",
+        "objectId": "6KmkSKFRBB",
+        "updatedAt": "2016-05-14T22:30:11.233Z",
+        "username": "ponnoju.sunil@gmail.com"
+    },
+	{
         "Amount": 7.62,
         "Date": {
             "__type": "Date",
@@ -8385,6 +8424,19 @@
         "username": "rpkishore@yahoo.com"
     },
 	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.452Z"
+        },
+        "Total_Amount": 23.84,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.653Z",
+        "objectId": "8WTzViYue8",
+        "updatedAt": "2016-05-13T22:30:13.653Z",
+        "username": "enturi@gmail.com"
+    },
+	{
         "Amount": 25,
         "Date": {
             "__type": "Date",
@@ -9956,6 +10008,19 @@
         "objectId": "AEjcdu1xrb",
         "updatedAt": "2016-01-16T22:30:07.878Z",
         "username": "parla.srinivas@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.710Z"
+        },
+        "Total_Amount": 11.42,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.174Z",
+        "objectId": "AEmx4nxwFi",
+        "updatedAt": "2016-05-14T22:30:11.174Z",
+        "username": "aravindksk@gmail.com"
     },
 	{
         "Amount": 6,
@@ -13702,6 +13767,19 @@
         "username": "mmkishore@hotmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.736Z"
+        },
+        "Total_Amount": 30.39,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.180Z",
+        "objectId": "DkbGDIBTGt",
+        "updatedAt": "2016-05-14T22:30:11.180Z",
+        "username": "ranjithkumar2319@gmail.com"
+    },
+	{
         "Amount": 3.64,
         "Date": {
             "__type": "Date",
@@ -14714,6 +14792,19 @@
         "objectId": "EkwYpEZGGF",
         "updatedAt": "2014-12-19T20:30:06.273Z",
         "username": "kpavankumar99@yahoo.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.711Z"
+        },
+        "Total_Amount": 4,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.175Z",
+        "objectId": "ElEhtpBvAn",
+        "updatedAt": "2016-05-14T22:30:11.175Z",
+        "username": "gopal@taxnetaustralia.com.au"
     },
 	{
         "Amount": 5.45,
@@ -16432,6 +16523,19 @@
         "username": "parla.srinivas@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.717Z"
+        },
+        "Total_Amount": -11.92,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.179Z",
+        "objectId": "GKMLlNOsae",
+        "updatedAt": "2016-05-14T22:30:11.179Z",
+        "username": "malli.arjun@gmail.com"
+    },
+	{
         "Amount": 8.57,
         "Date": {
             "__type": "Date",
@@ -17054,6 +17158,19 @@
         "objectId": "Gwa13tQgGp",
         "updatedAt": "2015-09-13T00:22:56.765Z",
         "username": "saravanan@advantixtech.com.au"
+    },
+	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.448Z"
+        },
+        "Total_Amount": 8,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.655Z",
+        "objectId": "Gww9LgDTIP",
+        "updatedAt": "2016-05-13T22:30:13.655Z",
+        "username": "srikar.sakhamuri@gmail.com"
     },
 	{
         "Amount": 10,
@@ -17769,6 +17886,19 @@
         "objectId": "HhKNCurqf8",
         "updatedAt": "2016-03-25T22:57:31.060Z",
         "username": "naveenarla@gmail.com"
+    },
+	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.449Z"
+        },
+        "Total_Amount": -58.35,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.656Z",
+        "objectId": "HhTqmKEGRU",
+        "updatedAt": "2016-05-13T22:30:13.656Z",
+        "username": "parla.srinivas@gmail.com"
     },
 	{
         "Amount": 0.77,
@@ -19006,6 +19136,19 @@
         "username": "naveenarla@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.724Z"
+        },
+        "Total_Amount": 102.11,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.176Z",
+        "objectId": "JDtyvYk5rK",
+        "updatedAt": "2016-05-14T22:30:11.176Z",
+        "username": "vprads@yahoo.com"
+    },
+	{
         "Amount": 4.62,
         "Date": {
             "__type": "Date",
@@ -19576,6 +19719,19 @@
         "objectId": "Jkjfus4TDi",
         "updatedAt": "2015-04-21T05:27:18.227Z",
         "username": "sreekanthp@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.749Z"
+        },
+        "Total_Amount": -73.06,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.177Z",
+        "objectId": "JnKrYhXrdK",
+        "updatedAt": "2016-05-14T22:30:11.177Z",
+        "username": "sridhar.popuri@hcn.com.au"
     },
 	{
         "Amount": 8.57,
@@ -21710,6 +21866,19 @@
         "username": "guru.athresa@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.712Z"
+        },
+        "Total_Amount": 37,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.176Z",
+        "objectId": "LvEeN6np6s",
+        "updatedAt": "2016-05-14T22:30:11.176Z",
+        "username": "pgchand@hotmail.com"
+    },
+	{
         "Amount": 2.8,
         "Date": {
             "__type": "Date",
@@ -22397,6 +22566,19 @@
         "objectId": "MWdaGppMxI",
         "updatedAt": "2016-04-29T22:30:10.913Z",
         "username": "sreekanthp@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.743Z"
+        },
+        "Total_Amount": -59.5,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.177Z",
+        "objectId": "MXBeJdMj2t",
+        "updatedAt": "2016-05-14T22:30:11.177Z",
+        "username": "snehag2405@gmail.com"
     },
 	{
         "Amount": 7.27,
@@ -24568,6 +24750,19 @@
         "objectId": "OsRu2IL5hn",
         "updatedAt": "2015-04-18T20:30:05.380Z",
         "username": "velchuri.rakeshkumar@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.746Z"
+        },
+        "Total_Amount": 327.31,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.177Z",
+        "objectId": "OtvspzUo6u",
+        "updatedAt": "2016-05-14T22:30:11.177Z",
+        "username": "sreekanthp@gmail.com"
     },
 	{
         "Amount": 10.43,
@@ -30329,6 +30524,19 @@
         "username": "malli.arjun@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.742Z"
+        },
+        "Total_Amount": 132.31,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.180Z",
+        "objectId": "UA3Er2ByGa",
+        "updatedAt": "2016-05-14T22:30:11.180Z",
+        "username": "saravanan@advantixtech.com.au"
+    },
+	{
         "Amount": 8,
         "Date": {
             "__type": "Date",
@@ -30886,6 +31094,19 @@
         "objectId": "UkK2liyEK4",
         "updatedAt": "2015-07-04T22:30:09.193Z",
         "username": "srikanth.pagolu@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.726Z"
+        },
+        "Total_Amount": 3.01,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.178Z",
+        "objectId": "Ulugncqd85",
+        "updatedAt": "2016-05-14T22:30:11.178Z",
+        "username": "d.deepu7@gmail.com"
     },
 	{
         "Amount": 200,
@@ -33839,6 +34060,19 @@
         "username": "vprads@yahoo.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.739Z"
+        },
+        "Total_Amount": 16.79,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.178Z",
+        "objectId": "XmmlDB8Bnk",
+        "updatedAt": "2016-05-14T22:30:11.178Z",
+        "username": "sandeepnbhat0505@gmail.com"
+    },
+	{
         "Amount": 3,
         "Date": {
             "__type": "Date",
@@ -34227,6 +34461,19 @@
         "objectId": "YCkWTPA5Ll",
         "updatedAt": "2015-08-01T22:30:06.071Z",
         "username": "rpkishore@yahoo.com"
+    },
+	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.444Z"
+        },
+        "Total_Amount": 12.7,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.654Z",
+        "objectId": "YD8Qawxxwc",
+        "updatedAt": "2016-05-13T22:30:13.654Z",
+        "username": "gopal@taxnetaustralia.com.au"
     },
 	{
         "Amount": 10,
@@ -35087,6 +35334,19 @@
         "username": "naveenarla@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.755Z"
+        },
+        "Total_Amount": 15.14,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.233Z",
+        "objectId": "YwiFBPTSRF",
+        "updatedAt": "2016-05-14T22:30:11.233Z",
+        "username": "enturi@gmail.com"
+    },
+	{
         "Amount": 1,
         "Date": {
             "__type": "Date",
@@ -35685,6 +35945,19 @@
         "username": "aditya.tadimalla@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.714Z"
+        },
+        "Total_Amount": -55.51,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.175Z",
+        "objectId": "ZWnBo1HGW8",
+        "updatedAt": "2016-05-14T22:30:11.175Z",
+        "username": "guru.athresa@gmail.com"
+    },
+	{
         "Amount": 10.43,
         "Date": {
             "__type": "Date",
@@ -36190,6 +36463,19 @@
         "objectId": "ZyBBwZkqZl",
         "updatedAt": "2015-04-11T20:30:08.099Z",
         "username": "malli.arjun@gmail.com"
+    },
+	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.447Z"
+        },
+        "Total_Amount": 141.01,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.655Z",
+        "objectId": "ZyF4hOAFhn",
+        "updatedAt": "2016-05-13T22:30:13.655Z",
+        "username": "saravanan@advantixtech.com.au"
     },
 	{
         "Amount": 8.28,
@@ -37165,6 +37451,19 @@
         "objectId": "au6hUPjFXY",
         "updatedAt": "2015-08-29T22:30:05.837Z",
         "username": "vprads@yahoo.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.715Z"
+        },
+        "Total_Amount": 62.5,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.178Z",
+        "objectId": "auYYLOewbY",
+        "updatedAt": "2016-05-14T22:30:11.178Z",
+        "username": "clickzht@gmail.com"
     },
 	{
         "Amount": 2.86,
@@ -39364,6 +39663,19 @@
         "username": "clickzht@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.737Z"
+        },
+        "Total_Amount": -0.47,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.178Z",
+        "objectId": "cxrsfNVOf1",
+        "updatedAt": "2016-05-14T22:30:11.178Z",
+        "username": "raviannamneni@gmail.com"
+    },
+	{
         "Amount": 4.62,
         "Date": {
             "__type": "Date",
@@ -39674,6 +39986,19 @@
         "objectId": "dQzEiwEYCC",
         "updatedAt": "2016-01-09T21:58:43.003Z",
         "username": "sreekanthp@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.718Z"
+        },
+        "Total_Amount": 52.75,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.177Z",
+        "objectId": "dR0xo5e7s2",
+        "updatedAt": "2016-05-14T22:30:11.177Z",
+        "username": "mallikarjun.avireni@gmail.com"
     },
 	{
         "Amount": 37,
@@ -45082,6 +45407,19 @@
         "objectId": "jGIx5ADFUz",
         "updatedAt": "2015-04-17T20:30:23.161Z",
         "username": "raja.raja11@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.732Z"
+        },
+        "Total_Amount": -46.93,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.174Z",
+        "objectId": "jH5TmRUkRr",
+        "updatedAt": "2016-05-14T22:30:11.174Z",
+        "username": "ramineni1407@gmail.com"
     },
 	{
         "Amount": 11.43,
@@ -52819,6 +53157,19 @@
         "username": "sreekanthp@gmail.com"
     },
 	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.446Z"
+        },
+        "Total_Amount": 8.23,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.654Z",
+        "objectId": "rMGETbzZ0v",
+        "updatedAt": "2016-05-13T22:30:13.654Z",
+        "username": "raviannamneni@gmail.com"
+    },
+	{
         "Amount": 9.6,
         "Date": {
             "__type": "Date",
@@ -52973,6 +53324,19 @@
         "objectId": "rX3tAJUrK4",
         "updatedAt": "2015-02-27T20:30:07.727Z",
         "username": "sreekanthp@gmail.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.753Z"
+        },
+        "Total_Amount": -67.05,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.175Z",
+        "objectId": "rXXCg5m3d2",
+        "updatedAt": "2016-05-14T22:30:11.175Z",
+        "username": "parla.srinivas@gmail.com"
     },
 	{
         "Amount": 1.33,
@@ -54756,6 +55120,19 @@
         "username": "srikanth.pagolu@gmail.com"
     },
 	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.721Z"
+        },
+        "Total_Amount": 50.18,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.179Z",
+        "objectId": "tJR4VAmkPb",
+        "updatedAt": "2016-05-14T22:30:11.179Z",
+        "username": "naveenarla@gmail.com"
+    },
+	{
         "Amount": 8.57,
         "Date": {
             "__type": "Date",
@@ -55458,6 +55835,19 @@
         "username": "mallikarjun.avireni@gmail.com"
     },
 	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.446Z"
+        },
+        "Total_Amount": -38.23,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.654Z",
+        "objectId": "u0NiHG2pay",
+        "updatedAt": "2016-05-13T22:30:13.654Z",
+        "username": "ramineni1407@gmail.com"
+    },
+	{
         "Amount": 3,
         "Date": {
             "__type": "Date",
@@ -55781,6 +56171,19 @@
         "objectId": "uIPs5KLxK9",
         "updatedAt": "2016-02-29T09:30:07.006Z",
         "username": "kpavankumar99@yahoo.com"
+    },
+	{
+        "Amount": 8.7,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-14T22:30:10.751Z"
+        },
+        "Total_Amount": -0.7,
+        "Transaction_Type": "Deduct_Sun",
+        "createdAt": "2016-05-14T22:30:11.181Z",
+        "objectId": "uJwSwoS9BM",
+        "updatedAt": "2016-05-14T22:30:11.181Z",
+        "username": "srikar.sakhamuri@gmail.com"
     },
 	{
         "Amount": 1.41,
@@ -60656,6 +61059,19 @@
         "objectId": "zGCH9pgunW",
         "updatedAt": "2015-08-22T21:32:41.882Z",
         "username": "saravanan@advantixtech.com.au"
+    },
+	{
+        "Amount": 4.44,
+        "Date": {
+            "__type": "Date",
+            "iso": "2016-05-13T22:30:13.445Z"
+        },
+        "Total_Amount": 45.7,
+        "Transaction_Type": "Deduct_Sat",
+        "createdAt": "2016-05-13T22:30:13.654Z",
+        "objectId": "zGSbksmtSO",
+        "updatedAt": "2016-05-13T22:30:13.654Z",
+        "username": "pgchand@hotmail.com"
     },
 	{
         "Amount": 6.67,
