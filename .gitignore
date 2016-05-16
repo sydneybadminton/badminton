@@ -9,6 +9,10 @@ venv/
 virtenv/
 vertenv/
 
+# DB directory
+db/
+
 # .pyc files
 *.pyc
 *.pyo
+*.sqlite

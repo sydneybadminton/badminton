@@ -23,6 +23,7 @@ def main():
                       'http://' + app.config['HOST_NAME'] + \
                       '\r\n\nThanks\r\n Maddy'
             SendGrid.send_email(user.email, "no-reply@sendgrid.me", subject, message)
+            print 'Sent an email to: ' + user.firstname
 
 if __name__ == '__main__':
     sys.exit(main())

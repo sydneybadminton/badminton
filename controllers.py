@@ -389,7 +389,7 @@ def get_group_owners():
     if not current_user.isSuperUser:
         abort(401)
 
-    group_owners = User.query.filter_by(isGroupOwner=True)
+    group_owners = User.query.filter_by(isGroupOwner=True).order_by(User.firstname.asc())
     schema = UserShortSchema(many=True)
     json_result = schema.dumps(group_owners)
     return json_result.data
