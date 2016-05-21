@@ -11,11 +11,11 @@ def run_expense(day):
         courts_cost = CourtsCost.query.filter_by(day=day).first()
 
         if day == "Saturday":
-            players = User.query.filter_by(isSaturdayAbsent=False)
-            absent_players = User.query.filter_by(isSaturdayAbsent=True)
+            players = User.query.filter_by(isSaturdayAbsent=False).order_by(User.firstname.asc())
+            absent_players = User.query.filter_by(isSaturdayAbsent=True).order_by(User.firstname.asc())
         elif day == "Sunday":
-            players = User.query.filter_by(isSundayAbsent=False)
-            absent_players = User.query.filter_by(isSundayAbsent=True)
+            players = User.query.filter_by(isSundayAbsent=False).order_by(User.firstname.asc())
+            absent_players = User.query.filter_by(isSundayAbsent=True).order_by(User.firstname.asc())
         db.session.close()
 
         email_ids = []
