@@ -614,7 +614,7 @@ def delete_a_user():
     db.session.commit()
 
     email_ids = [current_user.email, email]
-    subject = 'Badminton: Your account is provisioned'
+    subject = 'Badminton: Your account has been deleted'
     message = 'Hi ' + user.firstname + ',\r\n\nAs requested, your account has been deleted from badminton group.' + \
               '\r\n\nThanks\r\nSydney Badminton Group'
     SendGrid.send_email(email_ids, "no-reply@sendgrid.me", subject, message)
