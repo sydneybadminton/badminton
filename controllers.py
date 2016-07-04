@@ -96,7 +96,7 @@ def cant_play_on_saturdays():
     weeks = int(request.json['weeks'])
     future = bool(request.json['future'])
 
-    if weeks <= 0 or weeks > 52:
+    if weeks <= 0 or weeks > 520:
         abort(400)
 
     user = User.query.get(email)
@@ -165,7 +165,7 @@ def cant_play_on_sundays():
     weeks = int(request.json['weeks'])
     future = bool(request.json['future'])
 
-    if weeks <= 0 or weeks > 52:
+    if weeks <= 0 or weeks > 520:
         abort(400)
 
     user = User.query.get(email)
