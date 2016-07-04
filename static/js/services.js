@@ -354,11 +354,11 @@ services.factory('ButtonService', ['$rootScope', '$ionicPopup', '$ionicLoading',
 				        	  onTap: function(e) {
 				        		  var x = scope.data.numberOfWeeks;
 				        		  var isInt = buttonServiceFunctions.isInt(x);
-				        		  if ((scope.data.numberOfWeeks < 1) || (scope.data.numberOfWeeks > 52) || (!isInt)) {
+				        		  if ((scope.data.numberOfWeeks < 1) || (scope.data.numberOfWeeks > 520) || (!isInt)) {
 				        			  // don't allow the user to close unless he/she enters some number
 				        			  var alertPopup = $ionicPopup.alert({
 				        				     title: 'Invalid Characters',
-				        				     template: 'Please enter non-Decimal values between 1 and 52 inclusive.'
+				        				     template: 'Please enter non-Decimal values between 1 and 520 inclusive.'
 				        				   });
 				        				   alertPopup.then(function(res) {
 				        					   
@@ -458,11 +458,11 @@ services.factory('ButtonService', ['$rootScope', '$ionicPopup', '$ionicLoading',
 				        	  onTap: function(e) {
 				        		  var x = scope.data.numberOfWeeks;
 				        		  var isInt = buttonServiceFunctions.isInt(x);
-				        		  if ((scope.data.numberOfWeeks < 1) || (scope.data.numberOfWeeks > 52) || (!isInt)) {
+				        		  if ((scope.data.numberOfWeeks < 1) || (scope.data.numberOfWeeks > 520) || (!isInt)) {
 			        			  // don't allow the user to close unless he/she enters some number
 			        			  var alertPopup = $ionicPopup.alert({
 			        				     title: 'Invalid Characters',
-			        				     template: 'Please enter non-Decimal values between 1 and 52 inclusive.'
+			        				     template: 'Please enter non-Decimal values between 1 and 520 inclusive.'
 			        				   });
 			        				   alertPopup.then(function(res) {
 			        					console.log('invalid values caught');   

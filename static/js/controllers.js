@@ -478,11 +478,13 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 				var updateSaturdayCourtsCost = BadmintonSvc.updateCourtsCost(res, "Saturday");
 				updateSaturdayCourtsCost.then(function(success) {
 					UtilSvc.hidePleaseWait();
+					UtilSvc.showAlert('Success', 'Successfully changed Saturday courts cost');
 					myPopup.close();
 				}, function(error) {
 					// Alert dialog, try again
 					UtilSvc.hidePleaseWait();
 					UtilSvc.showAlert('Saturday Cost Update Failed!', 'There was an error in updating the courts cost for Saturday. Please try again later.');
+					myPopup.close();
 				});
 			} else {
 				myPopup.close();	
@@ -519,11 +521,13 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 				var jobSundayExpense = BadmintonSvc.updateCourtsCost(res, "Sunday");
 				jobSundayExpense.then(function(success) {
 					UtilSvc.hidePleaseWait();
+					UtilSvc.showAlert('Success', 'Successfully changed Sunday courts cost');
 					myPopup.close();
 				}, function(error) {
 					// Alert dialog, try again
 					UtilSvc.hidePleaseWait();
 					UtilSvc.showAlert('Sunday Cost Update Failed!', 'There was an error in updating the courts cost for Sunday. Please try again later.');
+					myPopup.close();
 				});
 			} else {
 				myPopup.close();	
@@ -561,11 +565,13 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 				var jobShuttlesExpense = BadmintonSvc.runShuttlesExpense(res);
 				jobShuttlesExpense.then(function(success) {
 				    UtilSvc.hidePleaseWait();
+				    UtilSvc.showAlert('Success', 'Successfully charged shuttle expense');
 					myPopup.close();
 				}, function(error) {
 					// Alert dialog, try again
 					UtilSvc.hidePleaseWait();
 					UtilSvc.showAlert('Error!', 'Could not run shuttle expense, please try again later');
+					myPopup.close();
 				});
 			} else {
 				console.log('shuttle - cancel button is clicked');
