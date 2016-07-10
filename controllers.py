@@ -292,7 +292,7 @@ def remove_sunday_absentee():
     """Send an email"""
     subject = 'Badminton: You are playing again on Sunday!!!'
     message = 'Hi,\r\n\nYou are removed from Sunday absents list by ' + current_user.firstname + ' ' + \
-              current_user.lastname + '. From this point onwards you are assumed to be playing on Saturdays ' + \
+              current_user.lastname + '. From this point onwards you are assumed to be playing on Sundays ' + \
               'and you are charged for Sunday games. If you can\'t play in future please ' + \
               'register your absense using the badminton app.\r\n\n' + 'If you have any issues please contact ' + \
               super_user.firstname + ' ' + super_user.lastname + ' at: ' + super_user.email + \
