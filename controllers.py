@@ -336,7 +336,7 @@ def run_shuttle_expense():
     if not current_user.isSuperUser:
         abort(401)
 
-    cost = request.args.get('cost')
+    cost = float(request.args.get('cost'))
 
     if cost <= 0:
         abort(400)
@@ -443,7 +443,7 @@ def topup_group():
         abort(401)
 
     email = request.json['email']
-    amount = int(request.json['amount'])
+    amount = float(request.json['amount'])
 
     if amount <= 0:
         abort(400)
