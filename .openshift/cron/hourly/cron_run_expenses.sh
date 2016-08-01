@@ -3,11 +3,12 @@ day=$(TZ="Australia/Sydney" date +%A)
 hour=$(TZ="Australia/Sydney" date +%H)
 minute=$(TZ="Australia/Sydney" date +%M)
 
-if [[ $day == "Saturday" && $hour == 08 ]];
-then
-    echo "Running run_saturday_expense.py" >> ${OPENSHIFT_LOG_DIR}/hourly.log
-    python ${OPENSHIFT_REPO_DIR}/scripts/run_saturday_expense.py
-elif [[ $day == "Sunday" && $hour == 09 ]];
+#if [[ $day == "Saturday" && $hour == 08 ]];
+#then
+#    echo "Running run_saturday_expense.py" >> ${OPENSHIFT_LOG_DIR}/hourly.log
+#    python ${OPENSHIFT_REPO_DIR}/scripts/run_saturday_expense.py
+#el
+if [[ $day == "Sunday" && $hour == 09 ]];
 then
     echo "Running run_sunday_expense.py" >> ${OPENSHIFT_LOG_DIR}/hourly.log
     python ${OPENSHIFT_REPO_DIR}/scripts/run_sunday_expense.py
