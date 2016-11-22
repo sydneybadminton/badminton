@@ -200,11 +200,11 @@ controllers.controller('DashCtrl', function($rootScope, $scope, $state, $timeout
 
 	// Button clicks
 	$scope.cantPlaySatBtnClick = function() {
-		ButtonService.cantPlaySatBtnClick();
+//		ButtonService.cantPlaySatBtnClick();
 	};
 
 	$scope.wantPlaySatBtnClick = function() {
-		ButtonService.wantPlaySatBtnClick();
+//		ButtonService.wantPlaySatBtnClick();
 	};
 
 	$scope.cantPlaySunBtnClick = function() {
@@ -251,11 +251,11 @@ controllers.controller('MembersCtrl', function($rootScope, $scope) {
 controllers.controller('MemberDetailCtrl', function($rootScope, $scope, $ionicPopup, $ionicLoading, $ionicNavBarDelegate, $stateParams, BadmintonSvc, $q, ButtonService) {
 	// Button clicks
 	$scope.cantPlaySatBtnClick = function() {
-		ButtonService.cantPlaySatBtnClick();
+//		ButtonService.cantPlaySatBtnClick();
 	};
 
 	$scope.wantPlaySatBtnClick = function() {
-		ButtonService.wantPlaySatBtnClick();
+//		ButtonService.wantPlaySatBtnClick();
 	};
 
 	$scope.cantPlaySunBtnClick = function() {
