@@ -11,6 +11,7 @@ from models import db, User, UserSchema, UserShortSchema, \
     Transaction, TransactionSchema, CourtsCost, Expense, Log
 from utils import SendGrid
 from forms import ResetPasswordForm
+from expense_util import run_expense
 
 
 api = Blueprint('api', __name__)
@@ -382,6 +383,14 @@ def run_shuttle_expense():
 
     return "Success"
 
+@api.route('/api/runSundayExpense')
+@login_required
+def run_sunday_expense():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    run_expense("Sunday")
+    return "Success"
 
 @api.route('/api/getGroupOwners')
 @login_required

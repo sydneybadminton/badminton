@@ -533,7 +533,40 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 				myPopup.close();	
 			}
 		});
-	};	
+	};
+
+	$scope.runSundayExpense = function () {
+        var confirmPopup = $ionicPopup.confirm({
+                    title: 'Run Sunday Expense?',
+                    template: 'Are you sure you want to run Sunday Expense?'
+                });
+        confirmPopup.then(function(res) {
+            if(res) {
+                console.log('You are sure');
+                $ionicLoading.show({
+                    template: 'Please wait...'
+                });
+                var runSundayExpenses = BadmintonSvc.runSundayExpense();
+                runSundayExpenses.then(function(payload) {
+                    // Urrey! success, refresh the data
+                    $ionicLoading.hide();
+                }, function(error) {
+                    // Alert dialog, try again
+                    console.log(error);
+                    $ionicLoading.hide();
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Run Sunday Expense failed!',
+                        template: message
+                    });
+                    alertPopup.then(function(res) {
+                        console.log('User clicked on the ok button');
+                    });
+                });
+            } else {
+                console.log('You are not sure');
+            }
+        });
+	};
 
 	$scope.enterShuttlesExpense = function() {
 		$scope.data = {}

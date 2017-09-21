@@ -111,6 +111,10 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
                  });
         },
 
+        runSundayExpense: function() {
+            return $http.get('/api/runSundayExpense');
+        },
+
         sendPaymentNotificationToSuperUser: function(amount) {
             return $http({
                     url: '/api/sendPaymentNotificationToSuperUser',

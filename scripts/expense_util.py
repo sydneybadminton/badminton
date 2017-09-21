@@ -79,7 +79,7 @@ def run_expense(day):
             db.session.commit()
 
         body_text += '\nThanks\r\nSydney Badminton Group'
-        SendGrid.send_email(email_ids, "no-reply@sendgrid.me",
-                            "Badminton: Balances after " + day + "'s play", body_text)
+        # SendGrid.send_email(email_ids, "no-reply@sendgrid.me",
+        #                     "Badminton: Balances after " + day + "'s play", body_text)
 
         return
