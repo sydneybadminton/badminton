@@ -47,6 +47,7 @@ if __name__ == '__main__':
       pass
 
   print('Starting WSGIServer type %s on %s:%d ... ' % (fwtype, ip, port))
+  print "fwtype = " + fwtype
   if fwtype == "gevent":
     from gevent.pywsgi import WSGIServer
     WSGIServer((ip, port), application.app).serve_forever()
