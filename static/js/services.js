@@ -111,6 +111,14 @@ services.factory('BadmintonSvc', ['$rootScope', '$http', '$window', function($ro
                  });
         },
 
+        makeSomeoneSundayAbsent: function(email, numberOfWeeks) {
+            return $http({
+                    url: '/api/makeSomeoneSundayAbsent',
+                    method: "POST",
+                    data: {email: email, numberOfWeeks: numberOfWeeks}
+                 });
+        },
+
         runSundayExpense: function() {
             return $http.get('/api/runSundayExpense');
         },

@@ -131,6 +131,16 @@ angular.module('communityApp', ['ionic',
       }
     })
 
+    .state('tab.makeSomeoneSundayAbsent', {
+      url: '/makeSomeoneSundayAbsent',
+      views: {
+        'tab-SuperUser': {
+          templateUrl: 'static/templates/make-someone-sunday-absent.html',
+          controller: 'MakeSomeoneSundayAbsentCtrl'
+        }
+      }
+    })
+
     .state('tab.changeSU', {
       url: '/changeSU',
       views: {

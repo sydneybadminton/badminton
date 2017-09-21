@@ -494,6 +494,36 @@ def topup_group():
 
     return "Success"
 
+@api.route('/api/makeSomeoneSundayAbsent', methods=['POST'])
+@login_required
+def make_someone_sunday_absent():
+    if not current_user.isSuperUser:
+        abort(401)
+
+    email = request.json['email']
+    numberOfWeeks = int(request.json['numberOfWeeks'])
+
+    if numberOfWeeks <= 0:
+        abort(400)
+
+    user = User.query.get(email)
+
+    if not user:
+        abort(404)
+
+    """Insert a log"""
+    description = 'User, ' + user.firstname + ' ' + user.lastname + ' (' + user.email + ') has been marked absent on Sundays by Admin for ' + str(numberOfWeeks) + ' weeks'
+    log = Log(current_user.email, description)
+    db.session.add(log)
+    db.session.commit()
+
+    user.futureSundayAbsentWeeks = 0
+    user.isSundayAbsent = True
+    user.sundayAbsentWeeks = numberOfWeeks
+    db.session.commit()
+
+    return "Success"
+
 
 @api.route('/api/sendPaymentNotificationToSuperUser')
 @login_required

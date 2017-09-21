@@ -550,6 +550,7 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
                 runSundayExpenses.then(function(payload) {
                     // Urrey! success, refresh the data
                     $ionicLoading.hide();
+                    UtilSvc.showAlert('Success', 'Successfully run Sunday expense');
                 }, function(error) {
                     // Alert dialog, try again
                     console.log(error);
@@ -615,6 +616,10 @@ controllers.controller('SuperUser', function($scope, $ionicPopup, $state, $timeo
 
 	$scope.groupOwners = function() {
 	    $state.go('tab.topup');
+	};
+
+	$scope.makeSomeoneSundayAbsent = function() {
+	    $state.go('tab.makeSomeoneSundayAbsent');
 	};
 
 	$scope.changeSuperUser = function() {
@@ -705,6 +710,88 @@ controllers.controller('TopUpCtrl', function($scope, $ionicPopup, $ionicNavBarDe
                     function(error) {
                         UtilSvc.hidePleaseWait();
                         UtilSvc.showAlert('Error!', 'Could not top up users. Please try again later');
+                        myPopup.close();
+                    });
+                } else {
+                    UtilSvc.hidePleaseWait();
+                    myPopup.close();
+                }
+            });
+        };
+	}
+
+	//	When you come to top up controller just refresh data
+	refreshUI();
+});
+//---------------------------------------------------------------
+//TopUpCtrl - End
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//TopUpCtrl - Start
+//---------------------------------------------------------------
+controllers.controller('MakeSomeoneSundayAbsentCtrl', function($scope, $ionicPopup, $ionicNavBarDelegate, UtilSvc, BadmintonSvc) {
+    $scope.goBack = function() {
+		$ionicNavBarDelegate.back();
+	};
+
+	refreshUI = function() {
+		$scope.flag = true;
+        UtilSvc.showPleaseWait();
+        $scope.items = [];
+        var getAllUsers = BadmintonSvc.getAllUsers();
+        getAllUsers.then(function(payload) {
+            UtilSvc.hidePleaseWait();
+            var allUsers = payload.data;
+            for (var i = 0; i < allUsers.length; i++) {
+                $scope.items.push({firstname: allUsers[i].firstname, lastname: allUsers[i].lastname, email: allUsers[i].email});
+            }
+            if(!$scope.$$phase) {
+                // Let the HTML UI know that there is new data in transactions history so that this can be displayed
+                // in the table
+                $scope.$apply();
+            }
+        }, function(error) {
+            UtilSvc.hidePleaseWait();
+            UtilSvc.showAlert('Error!', 'Could not retrieve users. Please try again later');
+        });
+
+        $scope.makeAbsent = function(user) {
+            $scope.data = {}
+            var myPopup = $ionicPopup.prompt({
+                template: '<input type="number" ng-model="data.absentWeeks">',
+                title: 'Enter number of absent weeks',
+                subTitle: 'For '  + user.firstname + ' ' + user.lastname + ':',
+                scope: $scope,
+                buttons: [
+                          { text: 'Cancel' },
+                          {
+                              text: '<b>Save</b>',
+                              type: 'button-dark',
+                              onTap: function(e) {
+                                  if (!$scope.data.absentWeeks) {
+                                      e.preventDefault();
+                                  } else {
+                                      return $scope.data.absentWeeks;
+                                  }
+                              }
+                          },
+                          ]
+            });
+
+            myPopup.then(function(res) {
+                console.log("Absent weeks = " + res);
+                if (res != undefined) {
+                    UtilSvc.showPleaseWait();
+                    var topUpFnc = BadmintonSvc.makeSomeoneSundayAbsent(user.email, res);
+                    topUpFnc.then(function(payload) {
+                        UtilSvc.hidePleaseWait();
+                        UtilSvc.showAlert('Success', 'Successfully made user as absent');
+                        myPopup.close();
+                    },
+                    function(error) {
+                        UtilSvc.hidePleaseWait();
+                        UtilSvc.showAlert('Error!', 'Could not make user absent. Please try again later');
                         myPopup.close();
                     });
                 } else {
