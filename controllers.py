@@ -524,7 +524,6 @@ def make_someone_sunday_absent():
 
     return "Success"
 
-
 @api.route('/api/sendPaymentNotificationToSuperUser')
 @login_required
 def send_payment_notification_to_super_user():
