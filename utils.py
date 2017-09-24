@@ -1,4 +1,5 @@
 import sendgrid
+import os
 
 class SendGrid:
     @staticmethod
