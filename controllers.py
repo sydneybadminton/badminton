@@ -454,8 +454,8 @@ def topup_group():
     email = request.json['email']
     amount = float(request.json['amount'])
 
-    if amount <= 0:
-        abort(400)
+    # if amount <= 0:
+    #     abort(400)
 
     group_owner = User.query.get(email)
 
